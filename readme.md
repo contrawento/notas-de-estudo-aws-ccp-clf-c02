@@ -14,34 +14,14 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
 - [Domínios de conteúdo](#domínios-de-conteúdo)
 - [Domínio 3 - Tecnologia e Serviços Cloud](#domínio-3---tecnologia-e-serviços-cloud)
   - [Métodos de Deploying e Operating](#métodos-de-deploying-e-operating)
-    - [AWS Application Migration Service (MGN)](#aws-application-migration-service-mgn)
-    - [Elastic Beanstalk](#elastic-beanstalk)
-    - [CloudFormation](#cloudformation)
-    - [OpsWorks](#opsworks)
-    - [CodeCommit](#codecommit)
-    - [CodeDeploy](#codedeploy)
-    - [CodePipeline](#codepipeline)
-    - [Elastic Container Services](#elastic-container-services)
-    - [Amazon Polly](#amazon-polly)
-    - [AWS Direct Connect](#aws-direct-connect)
   - [Serviços Globais](#serviços-globais)
   - [Serviços On-Premise](#serviços-on-premise)
   - [IAM - Identity and Access Management](#iam---identity-and-access-management)
-    - [Users](#users)
-    - [Groups](#groups)
-    - [Roles](#roles)
   - [S3 - Simple Storage Service](#s3---simple-storage-service)
   - [EC2 - Elastic Compute Cloud](#ec2---elastic-compute-cloud)
-    - [On-Demand Instances](#on-demand-instances)
-    - [Reserved Instances](#reserved-instances)
-    - [Spot Instances](#spot-instances)
-    - [Dedicated Hosts](#dedicated-hosts)
   - [RDS - Relational Database Service](#rds---relational-database-service)
   - [DynamoDB - NoSQL Database](#dynamodb---nosql-database)
   - [Elastic Loading Balance](#elastic-loading-balance)
-    - [Application Load Balancer](#application-load-balancer)
-    - [Network Load Balancer](#network-load-balancer)
-    - [Gateway Load Balancer](#gateway-load-balancer)
   - [Auto Scaling](#auto-scaling)
   - [Well-Architected Framework](#well-architected-framework)
 - [Domain 1 - Conceitos da Nuvem](#domain-1---conceitos-da-nuvem)
@@ -53,20 +33,8 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
 - [Domain 2 - Segurança e Conformidade](#domain-2---segurança-e-conformidade)
   - [Benefícios da AWS Security](#benefícios-da-aws-security)
   - [Modelo de Resposabilidade Compartilhada](#modelo-de-resposabilidade-compartilhada)
-    - [Security of the Cloud - AWS Responsability](#security-of-the-cloud---aws-responsability)
-    - [Security in the Cloud - Customer Responsability](#security-in-the-cloud---customer-responsability)
   - [AWS Cloud Compliance](#aws-cloud-compliance)
-    - [AWS Artifact](#aws-artifact)
   - [Serviços Relacionados](#serviços-relacionados)
-    - [AWS WAF - Web Application Firewall](#aws-waf---web-application-firewall)
-    - [AWS Shield - Proteção DDoS](#aws-shield---proteção-ddos)
-    - [Amazon Inspector](#amazon-inspector)
-    - [AWS Trusted Advisor](#aws-trusted-advisor)
-    - [CloudTrail](#cloudtrail)
-    - [CloudWatch](#cloudwatch)
-    - [AWS Config](#aws-config)
-    - [Athena](#athena)
-    - [Macie](#macie)
   - [Resumo dos Serviços](#resumo-dos-serviços)
 - [Domain 4 - Cobranças, Precificação e Suporte](#domain-4---cobranças-precificação-e-suporte)
   - [Pay-as-you-go - Pague pelo uso](#pay-as-you-go---pague-pelo-uso)
@@ -77,13 +45,7 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
   - [Serviços Gratuitos](#serviços-gratuitos)
   - [AWS Free Tier](#aws-free-tier)
   - [Pontos de precificação em cada serviço](#pontos-de-precificação-em-cada-serviço)
-    - [Amazon EC2](#amazon-ec2)
-    - [AWS Lambda](#aws-lambda)
-    - [Amazon EBS](#amazon-ebs)
-    - [Amazon S3](#amazon-s3)
-    - [Amazon RDS](#amazon-rds)
   - [Resource Groups](#resource-groups)
-    - [Tags para Cost Allocation](#tags-para-cost-allocation)
   - [AWS Organizations](#aws-organizations)
   - [AWS Pricing Calculator](#aws-pricing-calculator)
   - [AWS Support](#aws-support)
@@ -125,49 +87,49 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
 
 ## Métodos de Deploying e Operating
 
-### [AWS Application Migration Service (MGN)](https://docs.aws.amazon.com/mgn/)
+### [AWS Application Migration Service (MGN)](https://docs.aws.amazon.com/mgn/) <!-- omit from toc -->
 
 Solução **lift-and-shift** automatizada. Pode migrar servidores físicos e quaisquer banco de dados ou aplicativos executrados neles para instâncias do EC2.
 
-### [Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/)
+### [Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/) <!-- omit from toc -->
 
 Serviço de deploying e scaling de web applications e serviços desenvolvidos em Java, .NET, PHP, Node.js, Python, Ruby e Go, além de servidores Docker, Apache, NGINX, Passenger e IIS.
 
 Você faz upload do código e a ferramenta faz o deploy automático de forma gratuita.
 
-### [CloudFormation](https://docs.aws.amazon.com/cloudformation/)
+### [CloudFormation](https://docs.aws.amazon.com/cloudformation/) <!-- omit from toc -->
 
 Provê uma linguagem comum para provisionar recursos na AWS. Permite utilizar linguagens de programação ou um arquivo de texto simples utilizando templates.
 
-### [OpsWorks](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/aws-opsworks.html)
+### [OpsWorks](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/aws-opsworks.html) <!-- omit from toc -->
 
 Serviço de gerenciamento de configurações que provê instâncias gerenciadas pelo **Chef** e pelo **Puppet**. Permite utilizar essas ferramentas para automatizar deploys e configurações entre **instâncias do EC2**.
 
-### [CodeCommit](https://docs.aws.amazon.com/codecommit/)
+### [CodeCommit](https://docs.aws.amazon.com/codecommit/) <!-- omit from toc -->
 
 É um **source central service** (serviço de gerenciamento de códigos-fonte) que hospeda repositórios baseados em **Git**. Elimina a necessidade de gerenciar a infraestrutura de um sistema de controle de versões.
 
-### [CodeDeploy](https://docs.aws.amazon.com/codedeploy/)
+### [CodeDeploy](https://docs.aws.amazon.com/codedeploy/) <!-- omit from toc -->
 
 Automatiza deploy de softwares em uma variedade de **serviços de computação** como o **EC2**, **Fargate** e **Lambda** e também em servidores on-premise.
 
-### [CodePipeline](https://docs.aws.amazon.com/codepipeline/)
+### [CodePipeline](https://docs.aws.amazon.com/codepipeline/) <!-- omit from toc -->
 
 Automatiza as fases de **build**, **test** e **deploy** no processo de release toda vez que é feita uma alteração no código, baseado em um modelo pré-definido.
 
 Essa ferramenta não possui **upfront fees** nem **long-term commitments**.
 
-### [Elastic Container Services](https://docs.aws.amazon.com/ecs/)
+### [Elastic Container Services](https://docs.aws.amazon.com/ecs/) <!-- omit from toc -->
 
 Permite gerenciar containers Docker diretamente pela AWS. Elimina a necessidade de gerenciar a infraestrutura do orquestrador de container.
 
 Dentro do ECS, o **Fargate** é uma interface de gerenciamento de containers que abstrai alguns detalhes de infraestrutura.
 
-### [Amazon Polly](https://docs.aws.amazon.com/polly/)
+### [Amazon Polly](https://docs.aws.amazon.com/polly/) <!-- omit from toc -->
 
 Serviço de machine learn que fornecce a conversão do texto em fala (TTS - Text-to-Speech). Tem a capacidade de ler texto em voz alta.
 
-### [AWS Direct Connect](https://docs.aws.amazon.com/directconnect/)
+### [AWS Direct Connect](https://docs.aws.amazon.com/directconnect/) <!-- omit from toc -->
 
 Vincula sua rede privada a um local do Direct Connect por meio de um cabo de fibra óptica. É um serviço consistente e privado pois sua empresa é a única usuária do cabo.
 
@@ -202,15 +164,15 @@ Permite gerenciar de forma segura o acesso à serviços e recursos na AWS para s
 - Gerenciar **usuários federados** e suas permissões.
   - Grupos de usuários administrados externamente.
 
-### Users
+### Users <!-- omit from toc -->
 
 Identidades para pessoas ou aplicações específicas.
 
-### Groups
+### Groups <!-- omit from toc -->
 
 Coleções de usuários para facilitar a gestão de permissões.
 
-### Roles
+### Roles <!-- omit from toc -->
 
 Identidades temporárias sem credenciais permanentes. Você assume quando precisa e elas expiram automaticamente. Exemplos de uso:
 - Serviços AWS acessarem outros serviços.
@@ -240,19 +202,19 @@ Serviço de armazenamento baseado em objeto, planejado para ter **99.999999999%*
 - Reduz o tempo necessário para deploy de um servidor.
 - Permite escalar a cacpacidade conforme uso.
 
-### On-Demand Instances
+### On-Demand Instances <!-- omit from toc -->
 
 Você paga por cacpacidade de computação por hora, sem compromisso de longo prazo. Se resume a: precisou mais, paga mais. Precisou menos, paga menos.
 
-### Reserved Instances
+### Reserved Instances <!-- omit from toc -->
 
 Provê descontos no uso de instâncias fazendo uma reserva por alguns anos.
 
-### Spot Instances
+### Spot Instances <!-- omit from toc -->
 
 Ainda mais descontos para quando você precisar de uma instância específica em um pré-determinado espaço de tempo.
 
-### Dedicated Hosts
+### Dedicated Hosts <!-- omit from toc -->
 
 A AWS te disponibiliza um servidor físico exclusívo. Tipo de instância muito específico, voltado para cenários onde há **requisitos especiais de hardware ou de licenciamento**.
 
@@ -276,17 +238,9 @@ Possui in-memory cache para grandes aplicações na internet.
 
 Automaticamente distribui tráfego entre múltiplos alvos, tais como instâncias EC2, containers e endereços IP. Pode fazer esse controle em uma ou entre várias AZs.
 
-### Application Load Balancer
-
-Faz o balanceamento de tráfego HTTP e HTTPS.
-
-### Network Load Balancer
-
-Faz o controle de balanceamento em conexões TCP, para alta performance no tráfego de rede.
-
-### Gateway Load Balancer
-
-Combina um balanceador de carga de rede com um endpoint da AWS (VPC Endpoint) para distribuir tráfego para dispositivos virtuais de terceiros (firewalls, IDS/IPS e etc.).
+- **Application Load Balancer:** Faz o balanceamento de tráfego HTTP e HTTPS.
+- **Network Load Balancer:** Faz o controle de balanceamento em conexões TCP, para alta performance no tráfego de rede.
+- **Gateway Load Balancer:** Combina um balanceador de carga de rede com um endpoint da AWS (VPC Endpoint) para distribuir tráfego para dispositivos virtuais de terceiros (firewalls, IDS/IPS e etc.).
 
 ## [Auto Scaling](https://docs.aws.amazon.com/autoscaling/)
 
@@ -356,8 +310,6 @@ Provê um **produto completo** que é executado e gerenciado pelo provedor do se
 
 Para a AWS, segurança na nuvem é questão de **altíssima prioridade**. Na nuvem você utiliza **ferramentas de segurança baseadas em software** para monitorar e proteger o fluxo de informações nos seus recursos.
 
-
-
 ## Benefícios da AWS Security
 
 - **Keep your data safe:** todos os seus dados em datacenters altamente seguros.
@@ -385,11 +337,11 @@ A diferenciação dessa responsabilidade é comumente referida como "Security **
 
 > _Obs.: Alguns detalhes variam conforme o serviço._
 
-### Security of the Cloud - AWS Responsability
+### Security of the Cloud - AWS Responsability <!-- omit from toc -->
 
 A AWS é responsável por **proteger a infraestrutura dos serviços ofereciedos na cloud**, composta pelo **hardware**, **software**, **rede** e **instalações**(data centers) que executam os serviços.
 
-### Security in the Cloud - Customer Responsability
+### Security in the Cloud - Customer Responsability <!-- omit from toc -->
 
 A responsabilidade do cliente é definida **conforme os serviços contratados**.
 
@@ -407,13 +359,13 @@ A infraestrutura da AWS é desenhada e gerenciada **alinhado com as melhores pr�
 - PCI DSS Level 1.
 - ISO 9001, ISO 27001, ISO 27017 e ISO 27018.
 
-### AWS Artifact
+### AWS Artifact <!-- omit from toc -->
 
 Uma lista de documentos referentes a segurança e conformidade na AWS.
 
 ## Serviços Relacionados
 
-### AWS WAF - Web Application Firewall
+### AWS WAF - Web Application Firewall <!-- omit from toc -->
 
 Te ajuda a proteger **suas aplicações web** ou **APIs** contra os **web exploits** mais comuns que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso.
 
@@ -423,19 +375,19 @@ O custo é baseado em quantas regras você define e em quantas requisições a a
 
 Pode ser utilizado na **AWS CloudFront** como parte de um CDN, no **Application Load Balancer** para servidores rodando no EC2 ou **Amazon API Gateway** para suas APIs.
 
-### AWS Shield - Proteção DDoS
+### AWS Shield - Proteção DDoS <!-- omit from toc -->
 
 Serviço de proteção à ataques DDoS que assegura aplicações rodando na AWS. É disponibilizada em dois níveis:
 - **Standard:** Já vem previamente habilitado, monitora o tráfego de rede e finaliza conexões que **aparentam ser tráfego malicioso em tempo-real**.
 - **Advanced:** Permite escrever regras específicas utilizando o **AWS WAF** para finalizar conexões.
 
-### Amazon Inspector
+### Amazon Inspector <!-- omit from toc -->
 
 Serviço de gerenciamento de vulnerabilidades que descobre workloads e as verifica continuamente em busca de exposição não-intencional na rede. Funciona nos recursos EC2, ECR e funções Lambda.
 
 Quando detectado uma vulnerabilidade, ele cria uma **descoberta**, um relatório detalhado do problema.
 
-### AWS Trusted Advisor
+### AWS Trusted Advisor <!-- omit from toc -->
 
 Ferramenta online que provê apoio em tempo real para provisionar recursos **seguindo as melhores práticas**.
 
@@ -446,29 +398,29 @@ Escaneia sua Infraestrutura na AWS e informa ações reccomendadas baseado em 5 
 - Tolerância à falhas.
 - Limites de serviços.
 
-### CloudTrail
+### CloudTrail <!-- omit from toc -->
 
 Serviço que habilita a **auditoria da sua conta** AWS. Monitora as atividades executadas no ambiente e gera logs a fim de facilitar futuras consultas e resolução de problemas.
 
-### CloudWatch
+### CloudWatch <!-- omit from toc -->
 
 Coleta **dados operacionais e de monitoramento** no formato de logs, métricas e eventos, **provendo uma visualização unificada** de recursos, aplicações e serviços da sua infraestrutura.
 
 Pode ser utilizado para **detectar anomalias**, **configurar alarmes**, **visualizar logs** e **métricas**. A partir dessas informações, também é possível **engatilhar ações automatizadas**.
 
-### AWS Config
+### AWS Config <!-- omit from toc -->
 
 Gerenciador de configurações gerais dos serviços da AWS. Facilita a aplicação de **regras de compliance**.
 
 Também gera um **histórico de alterações** das configurações.
 
-### Athena
+### Athena <!-- omit from toc -->
 
 Serviço de **consulta interativa** (**interactive query**) que **facilita a análise de dados** no **S3** utilizando **SQL padrão**.
 
 É um serviço **serverless** e você paga **apenas pelas queries que executar**.
 
-### Macie
+### Macie <!-- omit from toc -->
 
 Serviço de segurança que utiliza **machine learning** para **automaticamente descobrir**, **classificar** e **proteger dados sensíveis** na AWS.
 
@@ -550,7 +502,7 @@ Alguns produtos, plataformas e serviços possuem uma categoria gratuita, que fun
 
 ## Pontos de precificação em cada serviço
 
-### Amazon EC2
+### Amazon EC2 <!-- omit from toc -->
 
 - Horas de servidor.
 - Tipo de instância.
@@ -562,24 +514,24 @@ Alguns produtos, plataformas e serviços possuem uma categoria gratuita, que fun
 - Elastic IP addresses.
 - Sistemas operacionais e software packages.
 
-### AWS Lambda
+### AWS Lambda <!-- omit from toc -->
 
 A duração da execução do código Lambda é levado em consideração. O custoé baseado na quantidade de memória que você aloca para sua função.
 
-### Amazon EBS
+### Amazon EBS <!-- omit from toc -->
 
 - **Volumes:** cobrado conforme o tamanho do volume.
 - **Snapshots:** O primeiro é sempre **full** e os seguintes são **incrementais**. Também é cobrado pelo tamanho do snapshot.
 - **Transferência de dados:** entrada de dados gratuita e saída ccobrada por GBs transferidos.
 
-### Amazon S3
+### Amazon S3 <!-- omit from toc -->
 
 - **Tipos de classe:** custo varia dependendo do **storage class** escolhido.
 - **Armazenamento:** cobrado conforme o uso, GBs/$.
 - **Requisições:** a quantidade de requisições (**GETs**) também incide cobrança.
 - **Transferência de dados:** segue o mesmo padrão de dados **in** ou **outbound**.
 
-### Amazon RDS
+### Amazon RDS <!-- omit from toc -->
 
 - Horas de servidor ativo.
 - Características do banco.
@@ -595,7 +547,7 @@ A duração da execução do código Lambda é levado em consideração. O custo
 
 Coleção de recursos que compartilham uma ou mais tags, independentes de regiões ou zonas de disponibilidade. Facilita o gerenciamento, visualização e automação de tarefas em um grande número de recursos de uma vez só.
 
-### Tags para Cost Allocation
+### Tags para Cost Allocation <!-- omit from toc -->
 
 O AWS Cost Explorer permite filtrar melhor relatórios usando as tags.
 
