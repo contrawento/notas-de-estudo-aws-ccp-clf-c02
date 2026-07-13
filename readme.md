@@ -14,6 +14,7 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
 - [Domínios de conteúdo](#domínios-de-conteúdo)
 - [Domínio 3 - Tecnologia e Serviços Cloud](#domínio-3---tecnologia-e-serviços-cloud)
   - [Métodos de Deploying e Operating](#métodos-de-deploying-e-operating)
+    - [AWS Application Migration Service (MGN)](#aws-application-migration-service-mgn)
     - [Elastic Beanstalk](#elastic-beanstalk)
     - [CloudFormation](#cloudformation)
     - [OpsWorks](#opsworks)
@@ -21,6 +22,8 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
     - [CodeDeploy](#codedeploy)
     - [CodePipeline](#codepipeline)
     - [Elastic Container Services](#elastic-container-services)
+    - [Amazon Polly](#amazon-polly)
+    - [AWS Direct Connect](#aws-direct-connect)
   - [Serviços Globais](#serviços-globais)
   - [Serviços On-Premise](#serviços-on-premise)
   - [IAM - Identity and Access Management](#iam---identity-and-access-management)
@@ -41,7 +44,6 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
     - [Gateway Load Balancer](#gateway-load-balancer)
   - [Auto Scaling](#auto-scaling)
   - [Well-Architected Framework](#well-architected-framework)
-  - [AWS Support](#aws-support)
 - [Domain 1 - Conceitos da Nuvem](#domain-1---conceitos-da-nuvem)
   - [As 6 vantagens da Computação em Nuvem](#as-6-vantagens-da-computação-em-nuvem)
   - [IaaS - Infraestrutura como um Serviço](#iaas---infraestrutura-como-um-serviço)
@@ -57,6 +59,34 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
     - [AWS Artifact](#aws-artifact)
   - [Serviços Relacionados](#serviços-relacionados)
     - [AWS WAF - Web Application Firewall](#aws-waf---web-application-firewall)
+    - [AWS Shield - Proteção DDoS](#aws-shield---proteção-ddos)
+    - [Amazon Inspector](#amazon-inspector)
+    - [AWS Trusted Advisor](#aws-trusted-advisor)
+    - [CloudTrail](#cloudtrail)
+    - [CloudWatch](#cloudwatch)
+    - [AWS Config](#aws-config)
+    - [Athena](#athena)
+    - [Macie](#macie)
+  - [Resumo dos Serviços](#resumo-dos-serviços)
+- [Domain 4 - Cobranças, Precificação e Suporte](#domain-4---cobranças-precificação-e-suporte)
+  - [Pay-as-you-go - Pague pelo uso](#pay-as-you-go---pague-pelo-uso)
+  - [Save when you reserve - Economize com reservas](#save-when-you-reserve---economize-com-reservas)
+  - [Pay less by using more - Pague menos por usar mais](#pay-less-by-using-more---pague-menos-por-usar-mais)
+  - [Fundamentos da precificação](#fundamentos-da-precificação)
+  - [AWS Billing and Cost Management](#aws-billing-and-cost-management)
+  - [Serviços Gratuitos](#serviços-gratuitos)
+  - [AWS Free Tier](#aws-free-tier)
+  - [Pontos de precificação em cada serviço](#pontos-de-precificação-em-cada-serviço)
+    - [Amazon EC2](#amazon-ec2)
+    - [AWS Lambda](#aws-lambda)
+    - [Amazon EBS](#amazon-ebs)
+    - [Amazon S3](#amazon-s3)
+    - [Amazon RDS](#amazon-rds)
+  - [Resource Groups](#resource-groups)
+    - [Tags para Cost Allocation](#tags-para-cost-allocation)
+  - [AWS Organizations](#aws-organizations)
+  - [AWS Pricing Calculator](#aws-pricing-calculator)
+  - [AWS Support](#aws-support)
 
 # Domínios de conteúdo
 
@@ -95,6 +125,10 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
 
 ## Métodos de Deploying e Operating
 
+### [AWS Application Migration Service (MGN)](https://docs.aws.amazon.com/mgn/)
+
+Solução **lift-and-shift** automatizada. Pode migrar servidores físicos e quaisquer banco de dados ou aplicativos executrados neles para instâncias do EC2.
+
 ### [Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/)
 
 Serviço de deploying e scaling de web applications e serviços desenvolvidos em Java, .NET, PHP, Node.js, Python, Ruby e Go, além de servidores Docker, Apache, NGINX, Passenger e IIS.
@@ -128,6 +162,14 @@ Essa ferramenta não possui **upfront fees** nem **long-term commitments**.
 Permite gerenciar containers Docker diretamente pela AWS. Elimina a necessidade de gerenciar a infraestrutura do orquestrador de container.
 
 Dentro do ECS, o **Fargate** é uma interface de gerenciamento de containers que abstrai alguns detalhes de infraestrutura.
+
+### [Amazon Polly](https://docs.aws.amazon.com/polly/)
+
+Serviço de machine learn que fornecce a conversão do texto em fala (TTS - Text-to-Speech). Tem a capacidade de ler texto em voz alta.
+
+### [AWS Direct Connect](https://docs.aws.amazon.com/directconnect/)
+
+Vincula sua rede privada a um local do Direct Connect por meio de um cabo de fibra óptica. É um serviço consistente e privado pois sua empresa é a única usuária do cabo.
 
 ## Serviços Globais
 
@@ -174,7 +216,6 @@ Identidades temporárias sem credenciais permanentes. Você assume quando precis
 - Serviços AWS acessarem outros serviços.
 - Usuários assumirem permissões temporárias.
 - Acesso externo controlado.
-
 
 ## [S3 - Simple Storage Service](https://docs.aws.amazon.com/s3/)
 
@@ -265,18 +306,6 @@ Conceito desenvolvido para ajudar arquitetos de Cloud a construir ambientes segu
 - **Otimização de custos:** executar sistemas ao menos custo possível sem comprometer a qualidade.
 
 > _Obs.: Altamente recomendado ler toda a documentação do framework na AWS._
-
-## [AWS Support](https://docs.aws.amazon.com/aws-support/)
-
-Todos os planos de suporte permitem acesso ao **atendimento ao cliente** (**costumer service**), documentação, whitepapers e forúm de suporte.
-
-Para **atendimento técnico** (**technical support**) e outros recursos de planejamento, deploy e otimização do ambiente, você poder escolher um plano de suporte conforme necessidade.
-
-- **Business+ Support:** Plano mínimo recomendado para workloads de produção na AWS.
-- **Enterprise Support:** recomendado para workloads essenciais aos negócicos, que requerem assistência personalizada.
-- **Unified Operations:** para workloads de missão crítica que exigem maior resiliência e conhecimento especializado em aplicações.
-
-<br>
 
 # [Domain 1 - Conceitos da Nuvem](https://docs.aws.amazon.com/pt_br/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html)
 
@@ -394,4 +423,209 @@ O custo é baseado em quantas regras você define e em quantas requisições a a
 
 Pode ser utilizado na **AWS CloudFront** como parte de um CDN, no **Application Load Balancer** para servidores rodando no EC2 ou **Amazon API Gateway** para suas APIs.
 
+### AWS Shield - Proteção DDoS
 
+Serviço de proteção à ataques DDoS que assegura aplicações rodando na AWS. É disponibilizada em dois níveis:
+- **Standard:** Já vem previamente habilitado, monitora o tráfego de rede e finaliza conexões que **aparentam ser tráfego malicioso em tempo-real**.
+- **Advanced:** Permite escrever regras específicas utilizando o **AWS WAF** para finalizar conexões.
+
+### Amazon Inspector
+
+Serviço de gerenciamento de vulnerabilidades que descobre workloads e as verifica continuamente em busca de exposição não-intencional na rede. Funciona nos recursos EC2, ECR e funções Lambda.
+
+Quando detectado uma vulnerabilidade, ele cria uma **descoberta**, um relatório detalhado do problema.
+
+### AWS Trusted Advisor
+
+Ferramenta online que provê apoio em tempo real para provisionar recursos **seguindo as melhores práticas**.
+
+Escaneia sua Infraestrutura na AWS e informa ações reccomendadas baseado em 5 categorias:
+- Otimização de custos.
+- Performance.
+- Segurança.
+- Tolerância à falhas.
+- Limites de serviços.
+
+### CloudTrail
+
+Serviço que habilita a **auditoria da sua conta** AWS. Monitora as atividades executadas no ambiente e gera logs a fim de facilitar futuras consultas e resolução de problemas.
+
+### CloudWatch
+
+Coleta **dados operacionais e de monitoramento** no formato de logs, métricas e eventos, **provendo uma visualização unificada** de recursos, aplicações e serviços da sua infraestrutura.
+
+Pode ser utilizado para **detectar anomalias**, **configurar alarmes**, **visualizar logs** e **métricas**. A partir dessas informações, também é possível **engatilhar ações automatizadas**.
+
+### AWS Config
+
+Gerenciador de configurações gerais dos serviços da AWS. Facilita a aplicação de **regras de compliance**.
+
+Também gera um **histórico de alterações** das configurações.
+
+### Athena
+
+Serviço de **consulta interativa** (**interactive query**) que **facilita a análise de dados** no **S3** utilizando **SQL padrão**.
+
+É um serviço **serverless** e você paga **apenas pelas queries que executar**.
+
+### Macie
+
+Serviço de segurança que utiliza **machine learning** para **automaticamente descobrir**, **classificar** e **proteger dados sensíveis** na AWS.
+
+É capaz de reconhecer dados sensíveis e fornece painéis e alertas de como esses dados estão sendo acessados ou movidos.
+
+> _Obs.: Disponível para dados armazenados no **S3**._
+
+## Resumo dos Serviços
+
+- **AWS WAF:** Impede hackers (camada 7).
+- **AWS Shield:** Impede ataques DDoS (standard/advanced).
+- **AWS Inspector:** Rastreia vulnerabilidades na EC2.
+- **AWS Trusted Advisor:** Inspeciona a conta para melhores práticas.
+- **CloudWatch:** Monitoramento e observabilidade.
+- **CloudTrail:** Logs para auditoria.
+- **AWS Config:** Gerenciamento de configurações.
+- **Athena:** Consultas interativas no S3.
+- **Macie:** Análise de dados com IA no S3.
+
+# [Domain 4 - Cobranças, Precificação e Suporte](https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html)
+
+> _O domínio 4 representa 12% do conteúdo pontuado no exame._
+
+## Pay-as-you-go - Pague pelo uso
+
+O método de precificação "pague pelo uso" te permite se adaptar as necessidades do negócio sem grandes compromissos. Melhora a **responsividade à mudanças**.
+
+Neste modelo você provê **recursos na infraestrutura conforme a neessidade** ao invés de previsões, reduzindo o risco de **provisionar de mais ou de menos**.
+
+## Save when you reserve - Economize com reservas
+
+Para alguns serviços como **EC2** e **RDS**, você pode investir em **capacidade reservada**, economizando até **75%** comparando com o equivalente sob demanda. As instâncias reservadas estão disponíveis em 3 opções:
+
+- **No upfront payments (NURI):** opção de reserva sem pagamento adiantado. Reservando uma instância por 1 ano, garante 32% de economia.
+- **Partial upfront (PURI):** pagando parcialmente adiantado, você consegue garantir até 42% na reserva de 1 ano.
+- **All upfront (AURI):** paganto toda a reserva da forma adiantada, você garante a melhor opção de desconto.
+
+## Pay less by using more - Pague menos por usar mais
+
+Na AWS você consegue descontos baseados no volume de uso e realizar economias conforme o consumo aumentar.
+
+Para serviços como o **S3** e **dados transferidos para fora do EC2** o custo é tabelado, então quanto mais usar, menos é pago por GB.
+
+> _Obs.: Dados transferidos **para a AWS** são livres de custo._
+
+## Fundamentos da precificação
+
+Há três ponstos principais de custeamento na AWS: **computação**, **armazenamento** e **transferência de dados para fora**.
+
+Na **maioria dos casos**, não há cobrança para **transferência de dados para dentro da AWS** ou entre serviços **na mesma região**.
+
+## AWS Billing and Cost Management
+
+Serviço utilizado para **pagar sua fatura da AWS**, monitorar o consumo, analisar e controlar seus custos. Recursos:
+- Estimar e planejar seus custos na AWS.
+- Receber alertas caso seu custo exceda limites pré-configurados.
+- Analisar os gastos com cada recurso da AWS.
+- Simplificação no gerenciamento das contas múltiplas.
+
+|                                             AWS Budget (antes)                                             |                             AWS Cost Explorer (depois)                              |
+| :--------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: |
+| Permite customizar orçamentos que te alertam em caso do consumo exceder os limites ou chegar próximo disso. | Interface que permite visualizar relatórios dos custos e recursos ao longo do tempo. |
+
+## Serviços Gratuitos
+
+- Amazon VPC.
+- CloudFormation.
+- Elastic Beanstalk.
+- Auto Scaling.
+- IAM.
+- OpsWorks.
+
+## AWS Free Tier
+
+Alguns produtos, plataformas e serviços possuem uma categoria gratuita, que funcionam dentro algumas condições:
+- Sempre gratuito (**always free**).
+- Teste (**trial**).
+- Expiram em 12 meses.
+
+## Pontos de precificação em cada serviço
+
+### Amazon EC2
+
+- Horas de servidor.
+- Tipo de instância.
+- Modelo de precificação.
+- Número de instâncias.
+- Load balancing.
+- Monitoramento detalhado.
+- Auto Scaling.
+- Elastic IP addresses.
+- Sistemas operacionais e software packages.
+
+### AWS Lambda
+
+A duração da execução do código Lambda é levado em consideração. O custoé baseado na quantidade de memória que você aloca para sua função.
+
+### Amazon EBS
+
+- **Volumes:** cobrado conforme o tamanho do volume.
+- **Snapshots:** O primeiro é sempre **full** e os seguintes são **incrementais**. Também é cobrado pelo tamanho do snapshot.
+- **Transferência de dados:** entrada de dados gratuita e saída ccobrada por GBs transferidos.
+
+### Amazon S3
+
+- **Tipos de classe:** custo varia dependendo do **storage class** escolhido.
+- **Armazenamento:** cobrado conforme o uso, GBs/$.
+- **Requisições:** a quantidade de requisições (**GETs**) também incide cobrança.
+- **Transferência de dados:** segue o mesmo padrão de dados **in** ou **outbound**.
+
+### Amazon RDS
+
+- Horas de servidor ativo.
+- Características do banco.
+- Tipo de pagamento.
+- Tipo de deploy (quantidade de AZs).
+- Número de instâncias de banco.
+- Armazenamento provisionado.
+- Armazenamento adicional.
+- Requisições.
+- Transferência de dados.
+
+## Resource Groups
+
+Coleção de recursos que compartilham uma ou mais tags, independentes de regiões ou zonas de disponibilidade. Facilita o gerenciamento, visualização e automação de tarefas em um grande número de recursos de uma vez só.
+
+### Tags para Cost Allocation
+
+O AWS Cost Explorer permite filtrar melhor relatórios usando as tags.
+
+Geralmente os clientes utilizam marcacções de negócio como "centro de custo", "cliente" ou "projeto" para associar os custos da AWS com nomeações tradicionais de alocação de custo.
+
+## AWS Organizations
+
+Serviço de gerenciamento de contas que permite consolidar múltiplas contas AWS em uma **organization** onde você centraliza o gerenciamento. Recursos:
+- Gerenciamento e definição da organização e das contas AWS.
+- Controle de acessos e permissões.
+- Auditoria, monitoramento e segurança do ambiente para compliance.
+- Compartilhe recursos entre contas.
+- Centraliza o gerenciamento de **custos e pagamentos**.
+
+Existe um **soft limit** de 20 contas por organização, e um **hard limit** de uma master (paying) account por organização.
+
+> _Obs.: Esse limite de contas pode ser aumentado mediante solicitação._
+
+Para **Consolidated Billing Account** o limite é de 10 contas.
+
+## AWS Pricing Calculator
+
+Permite estimar o custo da AWS baseado em templates disponibilizados pela AWS. Você seleciona os serviços e quantidades e a ferramenta gera relatórios com o custo estimado do ambiente configurado.
+
+## [AWS Support](https://docs.aws.amazon.com/aws-support/)
+
+Todos os planos de suporte permitem acesso ao **atendimento ao cliente** (**costumer service**), documentação, whitepapers e forúm de suporte.
+
+Para **atendimento técnico** (**technical support**) e outros recursos de planejamento, deploy e otimização do ambiente, você poder escolher um plano de suporte conforme necessidade.
+
+- **Business+ Support:** Plano mínimo recomendado para workloads de produção na AWS.
+- **Enterprise Support:** recomendado para workloads essenciais aos negócicos, que requerem assistência personalizada.
+- **Unified Operations:** para workloads de missão crítica que exigem maior resiliência e conhecimento especializado em aplicações.
