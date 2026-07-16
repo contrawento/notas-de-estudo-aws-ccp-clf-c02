@@ -14,15 +14,16 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
 - [Domínios de conteúdo](#domínios-de-conteúdo)
 - [Domínio 3 - Tecnologia e Serviços Cloud](#domínio-3---tecnologia-e-serviços-cloud)
   - [Formas de acessar os serviços da AWS](#formas-de-acessar-os-serviços-da-aws)
-  - [Categorias de Serviços](#categorias-de-serviços)
-    - [Computação](#computação)
-    - [Armazenamento](#armazenamento)
-    - [Banco de Dados](#banco-de-dados)
-    - [Rede e Entrega (Networking \& Delivery)](#rede-e-entrega-networking--delivery)
+  - [Computação](#computação)
+  - [Armazenamento](#armazenamento)
+  - [Banco de Dados](#banco-de-dados)
+  - [Rede e Entrega (Networking \& Delivery)](#rede-e-entrega-networking--delivery)
   - [Métodos de Deploying e Operating](#métodos-de-deploying-e-operating)
+    - [Os "6 R's" da Estratégia de Migração para a AWS](#os-6-rs-da-estratégia-de-migração-para-a-aws)
   - [Serviços Globais](#serviços-globais)
   - [Serviços On-Premise (Híbridos)](#serviços-on-premise-híbridos)
   - [Well-Architected Framework](#well-architected-framework)
+    - [4 Estratégias Clássicas de Disaster Recovery (DR) suportadas pela AWS](#4-estratégias-clássicas-de-disaster-recovery-dr-suportadas-pela-aws)
   - [Resumo do Domínio 3](#resumo-do-domínio-3)
 - [Domain 1 - Conceitos da Nuvem](#domain-1---conceitos-da-nuvem)
   - [As 6 vantagens da Computação em Nuvem](#as-6-vantagens-da-computação-em-nuvem)
@@ -37,22 +38,29 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
     - [Security of the Cloud - AWS Responsability](#security-of-the-cloud---aws-responsability)
     - [Security in the Cloud - Customer Responsability](#security-in-the-cloud---customer-responsability)
   - [AWS Cloud Compliance](#aws-cloud-compliance)
-  - [Serviços Relacionados](#serviços-relacionados)
-    - [IAM - Identity and Access Management](#iam---identity-and-access-management)
-    - [AWS WAF - Web Application Firewall](#aws-waf---web-application-firewall)
-    - [AWS Shield - Proteção DDoS](#aws-shield---proteção-ddos)
-    - [Amazon Inspecto](#amazon-inspecto)
-    - [AWS Trusted Advisor](#aws-trusted-advisor)
-    - [CloudTrail](#cloudtrail)
-    - [CloudWatch](#cloudwatch)
-    - [AWS Config](#aws-config)
-    - [Athena](#athena)
-    - [Macie](#macie)
+    - [AWS Artifact](#aws-artifact)
+  - [IAM - Identity and Access Management](#iam---identity-and-access-management)
+    - [IAM Identity Center](#iam-identity-center)
+    - [IAM Access Analyzer](#iam-access-analyzer)
+  - [AWS Secrets Manager](#aws-secrets-manager)
+  - [AWS WAF - Web Application Firewall](#aws-waf---web-application-firewall)
+  - [AWS Shield - Proteção DDoS](#aws-shield---proteção-ddos)
+  - [Amazon Inspector](#amazon-inspector)
+  - [AWS Trusted Advisor](#aws-trusted-advisor)
+  - [Amazon GuardDuty](#amazon-guardduty)
+  - [CloudTrail](#cloudtrail)
+  - [CloudWatch](#cloudwatch)
+  - [AWS Config](#aws-config)
+  - [AWS Control Tower](#aws-control-tower)
+  - [Service Control Policies (SCPs)](#service-control-policies-scps)
+  - [Athena](#athena)
+  - [Macie](#macie)
   - [Resumo dos Serviços](#resumo-dos-serviços)
   - [Resumo do Domínio 2](#resumo-do-domínio-2)
 - [Domain 4 - Cobranças, Precificação e Suporte](#domain-4---cobranças-precificação-e-suporte)
   - [Pay-as-you-go - Pague pelo uso](#pay-as-you-go---pague-pelo-uso)
   - [Save when you reserve - Economize com reservas](#save-when-you-reserve---economize-com-reservas)
+    - [Regional vs. Zonal Reserved Instances](#regional-vs-zonal-reserved-instances)
   - [Pay less by using more - Pague menos por usar mais](#pay-less-by-using-more---pague-menos-por-usar-mais)
   - [Fundamentos da precificação](#fundamentos-da-precificação)
   - [AWS Billing and Cost Management](#aws-billing-and-cost-management)
@@ -71,6 +79,7 @@ Fonte: https://aws.amazon.com/pt/certification/certified-cloud-practitioner/
   - [AWS Support](#aws-support)
   - [AWS Marketplace e Service Catalog](#aws-marketplace-e-service-catalog)
   - [Resumo Rápido do Domínio 4](#resumo-rápido-do-domínio-4)
+- [Links Úteis](#links-úteis)
 
 # Domínios de conteúdo
 
@@ -91,8 +100,9 @@ Fonte: https://docs.aws.amazon.com/pt_br/aws-certification/latest/cloud-practiti
 A infraestrutura global da AWS é definida por **AWS Regions** e **Availability Zones**.
 - **AWS Regions** é um local físico com múltiplas AZs.
 - **Availability Zones** são diferentes datacenters dentro de uma região, com recursos de infraestrutura redundantes.
-- Ambos recursos são isolados, porém AZs de uma mesma região são interconectadas por um **low-latency link**.
+  - Ambos recursos são isolados, porém AZs de uma mesma região são interconectadas por um **low-latency link**.
 - **Edge Locations** são endpoints usandos para fazer caching de conteúdo, frequentemente usado pelo CloudFront e serviços de CDNs.
+  - **AWS Local Zones** são um tipo de infraestrutura AWS que estende os serviços da AWS para mais localidades, permitindo executar aplicações sensíveis à latência mais próximas dos usuários finais. Elas colocam serviços de computação, armazenamento, banco de dados e outros serviços AWS **perto de grandes centros populacionais onde uma Região AWS não existe**. Para começar a usar, é necessário opt-in (aceitar ativamente) pela zona Local Zone desejada.
 
 Em questão de **quantidade**:
 - Edge Locations > Availability Zones > Regions
@@ -110,9 +120,7 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
 - Interface de linha de comando (CLI).
 - Kits de desenvolvimento (SDKs) para diversas linguagens.
 
-## Categorias de Serviços
-
-### Computação
+## Computação
 
 - **[EC2 - Elastic Compute Cloud](https://docs.aws.amazon.com/ec2/):** Provê capacidade de computação variável na nuvem. Reduz o tempo necessário para deploy de um servidor e permite escalar a capacidade conforme uso. Oferece diferentes modelos de precificação (On-Demand, Reserved, Spot, Dedicated Hosts) e famílias de instâncias otimizadas para computação, memória, armazenamento ou GPU.
 - **[Lambda](https://docs.aws.amazon.com/lambda/):** Serviço de computação serverless que executa código em resposta a eventos. Você paga apenas pelo tempo de execução e número de requisições, sem gerenciar servidores.
@@ -120,8 +128,9 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
 - **[ECS - Elastic Container Service](https://docs.aws.amazon.com/ecs/):** Permite gerenciar containers Docker diretamente pela AWS. Elimina a necessidade de gerenciar a infraestrutura do orquestrador de container. Dentro do ECS, o **Fargate** é uma interface de gerenciamento de containers que abstrai completamente a camada de infraestrutura (serverless para containers).
 - **[EKS - Elastic Kubernetes Service](https://docs.aws.amazon.com/eks/):** Serviço gerenciado de Kubernetes, similar ao ECS, mas utilizando o padrão Kubernetes (open-source). Permite executar workloads Kubernetes sem precisar gerenciar o plano de controle.
 - **[Outposts](https://docs.aws.amazon.com/outposts/):** Hardware da AWS instalado fisicamente no datacenter do cliente, permitindo executar serviços AWS (EC2, EBS, RDS, etc.) localmente, com integração total à nuvem pública da AWS. Ideal para baixa latência ou residência de dados.
+- **[Amazon AppStream 2.0](https://docs.aws.amazon.com/appstream2/):** **Streaming de aplicações** totalmente gerenciado que permite transmitir aplicações desktop para usuários sem reescrever o código. Ele gerencia os recursos AWS necessários para hospedar e executar suas aplicações, escala automaticamente e fornece acesso sob demanda. Os usuários podem acessar as aplicações a partir de navegadores compatíveis com HTML5.
 
-### Armazenamento
+## Armazenamento
 
 - **[S3 - Simple Storage Service](https://docs.aws.amazon.com/s3/):** Serviço de armazenamento baseado em objeto, planejado para ter **99.999999999%** de disponibilidade (11 noves).
   - Object-based (armazena arquivos como objetos).
@@ -138,13 +147,14 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
     - S3 Glacier Deep Archive (arquivamento com recuperação em até 12 horas, mas por um menor custo).
 - **[EBS - Elastic Block Store](https://docs.aws.amazon.com/ebs/):** Volumes de armazenamento em bloco para uso com instâncias EC2. Persistem independentemente da vida útil da instância. Cobrado por GB e por IOPS.
 - **[EFS - Elastic File System](https://docs.aws.amazon.com/efs/):** Sistema de arquivos compartilhado (NFS) para EC2, escala automaticamente e é cobrado pelo uso.
+- **[FSx for Windows File Server]():** Permite lançar e escalar armazenamento de arquivos compartilhados para suas aplicações e usuários finais. É um serviço totalmente gerenciado que fornece sistemas de arquivos com suporte ao protocolo SMB. Ideal para migrar servidores de arquivos Windows para a AWS.
 - **[Storage Gateway](https://docs.aws.amazon.com/storagegateway/):** Gateway híbrido que conecta ambientes on-premise ao armazenamento da AWS (S3, EBS, etc.). Atua como um cache local para dados armazenados na nuvem.
 - **[Snow Family](https://docs.aws.amazon.com/snowball/):** Dispositivos físicos para transferência de grandes volumes de dados para a AWS ou para edge computing.
   - **Snowcone:** dispositivo pequeno, portátil (8 TB), com capacidade de edge computing.
   - **Snowball Edge:** dispositivo robusto com até 80 TB de armazenamento, muito usado para migrações.
   - **Snowmobile:** contêiner de 100 PB para transferências de dados excepcionalmente massivas.
 
-### Banco de Dados
+## Banco de Dados
 
 - **[RDS - Relational Database Service](https://docs.aws.amazon.com/rds/):** Fornece instâncias de banco de dados relacionais com capacidade variável e processos de administração automatizados (configuração de hardware, SO, do próprio banco, atualizações e backups). É disponibilizado em diversos tipos de instância, inclusive otimizadas para memória, performance ou I/O.
   - Engines suportadas: Amazon Aurora, PostgreSQL, MySQL, Oracle Database, SQL Server e MariaDB.
@@ -154,7 +164,7 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
 - **[Redshift](https://docs.aws.amazon.com/redshift/):** Data warehouse (armazenamento analítico) baseado em colunas, otimizado para consultas complexas em grandes volumes de dados.
 - **[DMS - Database Migration Service](https://docs.aws.amazon.com/dms/):** Migra bancos de dados relacionais, NoSQL e data warehouses com mínimo downtime. Suporta migrações homogêneas (ex: Oracle para Oracle) e heterogêneas (ex: Oracle para Aurora) com **schema conversion**.
 
-### Rede e Entrega (Networking & Delivery)
+## Rede e Entrega (Networking & Delivery)
 
 - **[VPC - Virtual Private Cloud](https://docs.aws.amazon.com/vpc/):** Rede virtual isolada logicamente dentro da AWS. Componentes principais:
   - Sub-redes (públicas e privadas) distribuídas entre AZs.
@@ -164,6 +174,7 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
 - **[Direct Connect](https://docs.aws.amazon.com/directconnect/):** Vincula sua rede privada a um local do Direct Connect por meio de um cabo de fibra óptica dedicado. É um serviço consistente e privado, pois sua empresa é a única usuária do link.
 - **[Route 53](https://docs.aws.amazon.com/route53/):** Serviço de DNS gerenciado, com alta disponibilidade e escalabilidade. Permite rotear usuários para aplicações dentro e fora da AWS.
 - **[CloudFront](https://docs.aws.amazon.com/cloudfront/):** Serviço de CDN que distribui conteúdo com baixa latência utilizando a rede global de Edge Locations. Integra-se com S3, ELB, EC2 e Lambda@Edge.
+- **[AWS Wavelenght]():** Incorpora serviços de computação e armazenamento da AWS dentro dos data centers de provedores de telecomunicações na borda da rede 5G. As Wavelength Zones são associadas a uma Região AWS e permite que desenvolvedores construam **aplicações que entregam latência ultrabaixa** para dispositivos móveis e usuários finais.
 - **[ELB - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/):** Automaticamente distribui tráfego entre múltiplos alvos, tais como instâncias EC2, containers e endereços IP. Pode fazer esse controle em uma ou entre várias AZs.
   - **Application Load Balancer (ALB):** Balanceamento de tráfego HTTP e HTTPS (camada 7).
   - **Network Load Balancer (NLB):** Balanceamento de conexões TCP/UDP (camada 4), para alta performance e baixa latência.
@@ -179,6 +190,19 @@ Como formas de acessar os serviços, a plataforma disponibiliza:
 - **[CodeCommit](https://docs.aws.amazon.com/codecommit/):** Serviço de gerenciamento de código-fonte que hospeda repositórios baseados em **Git**. Elimina a necessidade de gerenciar a infraestrutura de um sistema de controle de versões.
 - **[CodeDeploy](https://docs.aws.amazon.com/codedeploy/):** Automatiza deploy de softwares em uma variedade de serviços de computação como **EC2**, **Fargate** e **Lambda** e também em servidores on-premise.
 - **[CodePipeline](https://docs.aws.amazon.com/codepipeline/):** Automatiza as fases de **build**, **test** e **deploy** no processo de release toda vez que é feita uma alteração no código, baseado em um modelo pré-definido. Não possui **upfront fees** nem **long-term commitments**.
+- **[AWS Step Functions](docs.aws.amazon.com/step-functions/):** **Orquestração serverless** que permite criar fluxos de trabalho (chamados de state machines) para construir aplicações distribuídas, automatizar processos, orquestrar microsserviços e criar pipelines de dados e machine learning. Ele gerencia a lógica da aplicação, implementando branches, execuções paralelas e timeouts, além de executar retries automáticos em caso de erros. Integra-se com mais de 220 serviços AWS e endpoints HTTPS.
+
+### Os "6 R's" da Estratégia de Migração para a AWS
+
+São abordagens para mover aplicações para a nuvem:
+- **Rehost ("Lift and Shift"):** mover aplicações para AWS com mudanças mínimas. Estratégia mais rápida.
+- **Replatform ("Lift, Tinker, and Shift"):** fazer otimizações mínimas para melhorar performance.
+- **Refactor/Re-architect:** reescrever e reestruturar a aplicação para aproveitar ao máximo a nuvem.
+- **Repurchase:** substituir a aplicação por um produto SaaS ou solução de terceiros.
+- **Retire:** descomissionar aplicações que não são mais necessárias.
+- **Retain:** manter a aplicação on-premise por enquanto, migrando futuramente.
+
+> _Obs.: A AWS também menciona uma sétima estratégia (Relocate) em algumas documentações, mas os 6 Rs são os mais consolidados._
 
 ## Serviços Globais
 
@@ -217,6 +241,16 @@ Conceito desenvolvido para ajudar arquitetos de Cloud a construir ambientes segu
 Além do framework conceitual, a AWS disponibiliza a **[Well-Architected Tool](https://aws.amazon.com/well-architected-tool/)**, uma ferramenta gratuita que revisa suas workloads contra os 5 pilares e gera um relatório com recomendações práticas de melhoria.
 
 > _Obs.: Altamente recomendado ler toda a documentação do framework na AWS._
+
+###  4 Estratégias Clássicas de Disaster Recovery (DR) suportadas pela AWS
+
+As estratégias de disaster recovery na AWS são categorizadas em quatro abordagens, variando em custo e complexidade:
+| Estratégia               |                                                           Descrição                                                            |            RTO/RPO             |
+| :----------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :----------------------------: |
+| Backup and Restore       |                            Faz backup dos dados (ex: snapshots, S3) e restaura em caso de desastre.                            | Mais simples e de baixo custo. | Horas |
+| Pilot Light              | Mantém uma versão mínima da infraestrutura em execução na região de recuperação. Em caso de desastre, escala-se para produção. |       Dezenas de minutos       |
+| Warm Standby             |        Mantém uma versão reduzida mas completa da aplicação em execução na região de recuperação, pronta para escalar.         |            Minutos             |
+| Multi-Site Active/Active |                 Executa a aplicação em múltiplas regiões simultaneamente, com tráfego distribuído entre elas.                  |           Tempo real           |
 
 ## Resumo do Domínio 3
 
@@ -336,13 +370,11 @@ A infraestrutura da AWS é desenhada e gerenciada **alinhado com as melhores pr�
 - PCI DSS Level 1.
 - ISO 9001, ISO 27001, ISO 27017 e ISO 27018.
 
-### AWS Artifact <!-- omit from toc -->
+### AWS Artifact
 
 Uma lista de documentos referentes a segurança e conformidade na AWS (relatórios de auditoria, acordos, etc.). Acesso sob demanda.
 
-## Serviços Relacionados
-
-### [IAM - Identity and Access Management](https://docs.aws.amazon.com/iam/)
+## [IAM - Identity and Access Management](https://docs.aws.amazon.com/iam/)
 
 Permite gerenciar de forma segura o acesso à serviços e recursos na AWS para seus usuários.
 
@@ -356,7 +388,22 @@ Permite gerenciar de forma segura o acesso à serviços e recursos na AWS para s
 - Gerenciar **usuários federados** e suas permissões.
   - Grupos de usuários administrados externamente.
 
-### AWS WAF - Web Application Firewall
+### IAM Identity Center
+
+IAM Identity Center (anteriormente AWS Single Sign-On) é um serviço de gerenciamento de identidades baseado em nuvem que simplifica o gerenciamento de acesso de usuários em múltiplas contas AWS, aplicações, SDKs e ferramentas. Ele permite conectar usuários da força de trabalho a todas as suas aplicações gerenciadas pela AWS e contas AWS, fornecendo single sign-on (SSO) e gerenciamento centralizado de identidades e acessos.
+
+### IAM Access Analyzer
+
+Ajuda a identificar recursos (como buckets S3 ou roles IAM) na sua organização e contas que são compartilhados com uma entidade externa. Também identifica acessos não utilizados em sua organização e contas, monitorando continuamente todos os roles e usuários IAM. Outras capacidades incluem:
+- Validação de políticas IAM contra a gramática de políticas e melhores práticas da AWS.
+- Verificações de políticas personalizadas contra padrões de segurança especificados.
+- Geração de políticas IAM baseadas em atividades de acesso registradas no CloudTrail.
+
+## AWS Secrets Manager
+
+Ajuda a criptografar, armazenar e recuperar credenciais com segurança para bancos de dados e outros serviços. Permite gerenciar, recuperar e rotacionar credenciais de banco de dados, credenciais de aplicação, tokens OAuth, chaves de API e outros secrets ao longo de seu ciclo de vida. Suporta nativamente a rotação de credenciais para bancos de dados no RDS, clusters no Redshift e provedores SaaS como Salesforce e Snowflake. Elimina a necessidade de hardcodar informações sensíveis em texto plano.
+
+## AWS WAF - Web Application Firewall
 
 Te ajuda a proteger **suas aplicações web** ou **APIs** contra os **web exploits** mais comuns (OWASP Top 10) que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso.
 
@@ -366,19 +413,19 @@ O custo é baseado em quantas regras você define e em quantas requisições a a
 
 Pode ser utilizado em conjunto com **CloudFront** (CDN), **Application Load Balancer** (para EC2) ou **Amazon API Gateway**.
 
-### AWS Shield - Proteção DDoS 
+## AWS Shield - Proteção DDoS 
 
 Serviço de proteção à ataques DDoS que assegura aplicações rodando na AWS. Disponível em dois níveis:
 - **Standard:** Já vem previamente habilitado sem custo. Monitora o tráfego de rede e finaliza conexões que **aparentam ser tráfego malicioso em tempo-real**.
 - **Advanced:** Proteção adicional com custo mensal fixo + taxa por uso. Inclui suporte especializado (AWS DDoS Response Team), proteção contra ataques volumétricos complexos e integração com WAF para regras customizadas.
 
-### Amazon Inspecto
+## Amazon Inspector
 
 Serviço de gerenciamento de vulnerabilidades que descobre workloads e as verifica continuamente em busca de exposição não-intencional na rede. Funciona nos recursos EC2, ECR (containers) e funções Lambda.
 
 Quando detectada uma vulnerabilidade, ele cria uma **descoberta**, um relatório detalhado do problema.
 
-### AWS Trusted Advisor
+## AWS Trusted Advisor
 
 Ferramenta online que provê apoio em tempo real para provisionar recursos **seguindo as melhores práticas**.
 
@@ -389,27 +436,47 @@ Escaneia sua Infraestrutura na AWS e informa ações reccomendadas baseado em **
 - Tolerância à falhas.
 - Limites de serviços (alertas sobre aproximação de quotas).
 
-### CloudTrail
+## Amazon GuardDuty
+
+Serviço de detecção de ameaças que monitora continuamente, analisa e processa fontes de dados e logs no seu ambiente AWS. Utiliza feeds de inteligência contra ameaças (listas de IPs maliciosos, domínios, hashes de arquivos) e modelos de **machine learning para identificar atividades suspeitas e potencialmente maliciosas**. Detecta cenários como credenciais AWS comprometidas, exfiltração de dados e destruição de dados que podem levar a ataques de ransomware.
+
+## CloudTrail
 
 Serviço que habilita a **auditoria da sua conta** AWS. Monitora todas as atividades (chamadas de API) executadas no ambiente e gera logs detalhados, facilitando futuras consultas, resolução de problemas e análises forenses.
 
-### CloudWatch
+## CloudWatch
 
 Coleta **dados operacionais e de monitoramento** no formato de logs, métricas e eventos, **provendo uma visualização unificada** de recursos, aplicações e serviços da sua infraestrutura.
 
 Pode ser utilizado para **detectar anomalias**, **configurar alarmes**, **visualizar logs** e **métricas**. A partir dessas informações, também é possível **engatilhar ações automatizadas** (ex: Auto Scaling).
 
-### AWS Config 
+## AWS Config 
 
 Gerenciador de configurações gerais dos serviços da AWS. Facilita a aplicação de **regras de compliance** (ex: verificar se S3 buckets estão públicos). Também gera um **histórico de alterações** das configurações ao longo do tempo.
 
-### Athena
+## AWS Control Tower
+
+Serviço que permite impor e gerenciar regras de governança para segurança, operações e conformidade em escala. Ele oferece a maneira mais fácil de configurar e governar um ambiente AWS multi-account seguro e em conformidade, baseado em melhores práticas estabelecidas. Inclui:
+- **Landing Zone:** um ambiente bem-arquitetado e multi-account baseado em melhores práticas de segurança e conformidade.
+- **Guardrails (controls):** regras preventivas e detectivas que governam seus recursos AWS.
+- **Dashboard:** visibilidade contínua do ambiente.
+
+## Service Control Policies (SCPs)
+
+São um tipo de política de organização que oferece controle central sobre as permissões máximas disponíveis para os usuários e roles IAM na sua organização. Ajudam a garantir que as contas permaneçam dentro das diretrizes de controle de acesso. SCPs podem:
+- Restringir quais serviços ou ações suas identidades podem usar.
+- Restringir quais recursos suas identidades podem acessar.
+- Impor requisitos sobre como suas identidades podem acessar recursos.
+
+Elas são aplicadas a nível de conta ou Organizational Unit (OU) e funcionam como um "guarda-chuva" de permissões, nenhuma permissão pode exceder o que o SCP permite.
+
+## Athena
 
 Serviço de **consulta interativa** (**interactive query**) que **facilita a análise de dados** no **S3** utilizando **SQL padrão**.
 
 É um serviço **serverless** e você paga **apenas pelas queries que executar**.
 
-### Macie
+## Macie
 
 Serviço de segurança que utiliza **machine learning** para **automaticamente descobrir**, **classificar** e **proteger dados sensíveis** na AWS (ex: PII, dados financeiros)..
 
@@ -456,6 +523,19 @@ Para alguns serviços como **EC2** e **RDS**, você pode investir em **capacidad
 - **No upfront (NURI):** reserva sem pagamento adiantado. Ex: 1 ano garante ~32% de desconto.
 - **Partial upfront (PURI):** pagando parcialmente adiantado. Ex: 1 ano garante ~42% de desconto.
 - **All upfront (AURI):** pagando toda a reserva de forma adiantada, garante a maior economia. Ex: ~45%+ para 1 ano e até ~75% para 3 anos.
+
+### Regional vs. Zonal Reserved Instances
+
+Uma Zonal Reserved Instance é uma instância reservada comprada para uma Zona de Disponibilidade específica. Principais diferenças vs. Reserved Instance Regional:
+
+| Característica           |                Regional RI                 |                  Zonal RI                   |
+| :----------------------- | :----------------------------------------: | :-----------------------------------------: |
+| Reserva de capacidade    |           Não reserva capacidade           |    Reserva capacidade na AZ especificada    |
+| Flexibilidade de AZ      | Desconto aplica-se a qualquer AZ na região |     Desconto apenas na AZ especificada      |
+| Flexibilidade de tamanho |       Sim (dentro da mesma família)        | Não (apenas o tipo e tamanho especificados) |
+| Queue de compra          |                    Sim                     |                     Não                     |
+
+O preço é o mesmo para ambos os escopos. Zonal RIs são ideais para workloads críticas que precisam de capacidade garantida em uma AZ específica.
 
 ## Pay less by using more - Pague menos por usar mais
 
@@ -602,3 +682,14 @@ Para **atendimento técnico** (**technical support**) e outros recursos de plane
 - **Suporte:** Basic (grátis), Developer, Business (produção), Enterprise (TAM dedicado).
 - **Marketplace:** compra de soluções de terceiros.
 - **Service Catalog:** catálogo interno de serviços aprovados.
+
+---
+
+# Links Úteis
+
+- Cursos:
+  - https://skillbuilder.aws/category/exam-prep/cloud-practitioner-foundational-CLF-C02
+
+- Simulados:
+  - https://skillbuilder.aws/learn/E4W52ZKK6P/official-practice-question-set-aws-certified-cloud-practitioner-clfc02--portugus/PHFTZJJQK2
+  - https://www.techknow.com.br/tools/aws-cloud-practitioner
